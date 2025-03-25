@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Amma! 🎂🎉</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+            background-size: 400% 400%;
+            animation: gradientBG 6s infinite alternate;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+        }
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            100% {background-position: 100% 50%;}
+        }
+        @keyframes blink {
+            90% { color: red; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            50% { transform: translateX(3px); }
+            75% { transform: translateX(-3px); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes confetti {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(500px); opacity: 0; }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: yellow;
+            top: 0;
+            left: 50%;
+            animation: confetti 3s linear infinite;
+        }
+
+        h1, p {
+            animation: blink 0.9s infinite alternate, shake 1.7s infinite;
+        }
+        .gift-box {
+            width: 200px;
+            height: 200px;
+            background: url('5.png') no-repeat center/cover;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.5s ease-in-out;
+        }
+        .gift-box:hover {
+            transform: scale(1.1);
+        }
+        .arrow {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%) rotateX(0deg);
+            font-size: 40px;
+            color: white;
+            animation: floatArrow 1s infinite alternate ease-in-out;
+        }
+        @keyframes floatArrow {
+            0% { transform: translate(-50%, 0) scale(1) rotateX(0deg); }
+            100% { transform: translate(-50%, -10px) scale(1.1) rotateX(20deg); }
+        }
+        .banner {
+            position: absolute;
+            top: 10%;
+            width: 80%;
+            left: 10%;
+            background: rgba(255, 223, 186, 0.8);
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+        .hidden-content {
+            display: none;
+            text-align: center;
+            color: white;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 250px;
+            border-radius: 10px;
+            border: 4px solid white;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            transition: transform 0.5s;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="banner" class="banner">🎊 Happy Birthday Amma🎈</div>
+    <div id="giftBox" class="gift-box">
+        <div class="arrow">⬇️</div>
+    </div>
+    <div id="birthdayPage" class="hidden-content">
+        <h1>🎉 Happy Birthday Amma! 🎂🥳</h1>
+        <p>Your son is always there for you—stay happy, stay blessed, and keep smiling always... ❤🎉 </p>
+        <div class="gallery">
+            <img src="1.jpg" alt="Birthday Image 1">
+            <img src="2.jpg" alt="Birthday Image 2">
+            <img src="3.jpg" alt="Birthday Image 3">
+        </div>
+    </div>
+    <script>
+        document.getElementById('giftBox').addEventListener('click', function() {
+            document.getElementById('banner').style.display = 'none';
+            this.style.display = 'none';
+            document.getElementById('birthdayPage').style.display = 'block';
+            createConfetti();
+        });
+       
+        function createConfetti() {
+            for (let i = 0; i < 30; i++) {
+                let confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+     
+        
+    </script>
+</body>
+</html>
